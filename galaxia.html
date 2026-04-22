@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxia de Amor 💖</title>
+<link rel="icon" type="image/png" href="Yin_yang.png">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1a0033, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Arial;
+}
+
+/* Centro (sol) */
+.center {
+  position: absolute;
+  font-size: 2em;
+  text-align: center;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1);}
+  50% { transform: scale(1.2);}
+  100% { transform: scale(1);}
+}
+
+/* Órbitas */
+.orbit {
+  position: absolute;
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: 50%;
+  animation: rotate linear infinite;
+}
+
+/* Rotación */
+@keyframes rotate {
+  from { transform: rotate(0deg);}
+  to { transform: rotate(360deg);}
+}
+
+/* Texto orbitando */
+.text {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 1.2em;
+}
+</style>
+</head>
+
+<body>
+
+<div class="center">💖<br>Te Amo</div>
+
+<script>
+
+// Frases en distintos idiomas
+const frases = [
+  "Te amo",
+  "I love you",
+  "Je t'aime",
+  "Ti amo",
+  "Ich liebe dich",
+  "Eu te amo",
+  "愛してる",
+  "사랑해",
+  "Я тебя люблю"
+];
+
+// Crear órbitas
+for (let i = 0; i < 6; i++) {
+
+  let orbit = document.createElement("div");
+  orbit.className = "orbit";
+
+  let size = 150 + i * 80;
+
+  orbit.style.width = size + "px";
+  orbit.style.height = size + "px";
+  orbit.style.animationDuration = (10 + i * 5) + "s";
+
+  let text = document.createElement("div");
+  text.className = "text";
+  text.innerText = frases[i % frases.length];
+
+  orbit.appendChild(text);
+  document.body.appendChild(orbit);
+}
+
+</script>
+
+</body>
+</html>
